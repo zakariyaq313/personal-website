@@ -811,7 +811,7 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 
 .folder:not(:last-child) .folder-tray { border-bottom: 1px solid rgba(27, 25, 22, .1); }
 
-.folder-tray__inner { padding: 6px 14px 22px; }
+.folder-tray__inner { padding: 14px 0; }
 
 .photo-grid {
   display: grid;
@@ -825,6 +825,11 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 
 @media (max-width: 560px) {
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Align the photo block with the (wider) open folder-row card and balance
+     the vertical padding: the grid was inset ~14px more than the row card on
+     each side, and had less padding on top (6px) than bottom (22px). */
+  .folder-tray__inner { padding: 14px 0; }
 }
 
 .photo-tile {
@@ -867,13 +872,10 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 }
 
 /* In the 2-column tray the closer card would sit orphaned in its own row;
-   it becomes a slim full-width bar instead. */
+   it reads well as a card but not as a bar, so on small screens hide it
+   entirely — the photos alone carry the tray. */
 @media (max-width: 560px) {
-  .photo-tile--note {
-    grid-column: 1 / -1;
-    aspect-ratio: auto;
-    padding: 13px 17px;
-  }
+  .photo-tile--note { display: none; }
 }
 
 .photo-tile__note {
@@ -1065,6 +1067,8 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* Top padding matches the site header's 34px so the Close pill sits exactly
+     where the Menu button was; the overlay swap must not move the target. */
   padding: 34px 20px 0;
 }
 
