@@ -121,6 +121,9 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
   font-style: italic;
 }
 
+/* Keeps a short phrase on one line (e.g. "re-render", "Vue 3") */
+.nowrap { white-space: nowrap; }
+
 /* Marker-style emphasis */
 .highlight {
   background: var(--sunshine);
@@ -272,7 +275,7 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 .hero__name .serif { letter-spacing: -.015em; }
 
 .hero__tagline {
-  font-weight: 700;
+  font-weight: 500;
   font-size: clamp(20px, 2.6vw, 34px);
   line-height: 1.22;
   letter-spacing: -.02em;
@@ -289,11 +292,6 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
   line-height: 1.4;
   color: rgba(27, 25, 22, .6);
   margin: 0 0 16px;
-}
-
-.hero__experience .serif {
-  font-size: 1.14em;
-  letter-spacing: -.01em;
 }
 
 .skill-pills {
@@ -330,7 +328,7 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 .skill-pill--typescript { background: var(--navy);       color: #FBEFE6; }
 .skill-pill--react      { background: var(--periwinkle); color: #131F45; }
 .skill-pill--vue        { background: var(--green);      color: #123524; }
-.skill-pill--node       { background: var(--orange);     color: #33130A; }
+.skill-pill--css        { background: var(--lilac);      color: #2A1D52; }
 .skill-pill--systems    { background: var(--pink);       color: #2A0E1C; }
 .skill-pill--ai         { background: var(--sunshine);   color: #3A2A0E; }
 
@@ -471,10 +469,11 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 }
 
 .project-card__description {
-  font-weight: 500;
+  font-weight: 400;
   font-size: clamp(17px, 1.5vw, 19px);
   line-height: 1.62;
   margin: 0;
+  text-wrap: pretty; /* no single word stranded on the last line */
 }
 
 /* Card color schemes */
@@ -596,6 +595,7 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
   letter-spacing: -.03em;
   margin: 0;
   max-width: 18ch;
+  text-wrap: balance; /* keeps "story." from wrapping onto a line alone */
 }
 
 .life__headline .serif { color: var(--peach); }
@@ -824,12 +824,15 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 }
 
 @media (max-width: 560px) {
-  .photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
 
-  /* Align the photo block with the (wider) open folder-row card and balance
-     the vertical padding: the grid was inset ~14px more than the row card on
-     each side, and had less padding on top (6px) than bottom (22px). */
-  .folder-tray__inner { padding: 14px 0; }
+  /* Even frame around the photos: the grid sits 8px in from the panel's sides
+     (22px panel padding - 14px tray bleed), so top, bottom and the gap between
+     tiles all match at 8px.
+     The last tray skips its bottom padding - the panel's own bottom padding
+     already frames it. */
+  .folder-tray__inner { padding: 8px 0; }
+  .folder:last-child .folder-tray__inner { padding-bottom: 0; }
 }
 
 .photo-tile {
@@ -873,7 +876,7 @@ a { transition: opacity .2s, color .2s, border-color .2s, background .2s; }
 
 /* In the 2-column tray the closer card would sit orphaned in its own row;
    it reads well as a card but not as a bar, so on small screens hide it
-   entirely — the photos alone carry the tray. */
+   entirely - the photos alone carry the tray. */
 @media (max-width: 560px) {
   .photo-tile--note { display: none; }
 }
