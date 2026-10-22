@@ -4,11 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zakariya Qureshi | Personal Website</title>
-  <meta name="description" content="Personal website of Zakariya Qureshi, a software engineer working across frontend and systems. Selected work, life away from the keyboard, and a collection of everything worth keeping.">
+  <meta name="description" content="Personal website of Zakariya Qureshi, a software engineer working across frontend and systems. Personal projects, life away from the keyboard, and a look into my interests.">
+  <link rel="canonical" href="https://zakariyaq313.github.io/personal-website/">
+  <!-- Link previews (LinkedIn, WhatsApp, Slack, X…). The image URL must be absolute. -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zakariyaq313.github.io/personal-website/">
+  <meta property="og:title" content="Zakariya Qureshi">
+  <meta property="og:description" content="Personal website of Zakariya Qureshi, a software engineer working across frontend and systems. Personal projects, life away from the keyboard, and a look into my interests.">
+  <meta property="og:image" content="https://zakariyaq313.github.io/personal-website/assets/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Zakariya Qureshi: software engineer with an eye for detail and a deep commitment to good craft.">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
@@ -16,387 +27,216 @@
 <div id="top" class="page">
 
   <!-- ============================== HERO ============================== -->
-  <div class="hero-viewport">
-    <header class="site-header container">
-      <nav class="site-nav" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#offline">Life</a>
-        <a href="#archive">Collection</a>
-        <a href="#hello">Hello</a>
-      </nav>
-      <button class="menu-button" type="button" aria-label="Open menu">
-        <span class="menu-button__icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-        </span>
-        Menu
-      </button>
-    </header>
+  <section class="hero" aria-label="Introduction">
+    <div class="hero__inner">
+      <header class="site-header">
+        <a class="site-header__mark" href="#top">ZQ</a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#life">Life</a>
+          <a href="#hello">Hello</a>
+        </nav>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <span class="menu-button__icon" aria-hidden="true"><span></span><span></span></span>
+          Menu
+        </button>
+      </header>
 
-    <section class="hero container">
-      <p class="hero__eyebrow reveal">Hello, I am</p>
-      <h1 class="hero__name reveal">Zakariya <span class="serif">Qureshi.</span></h1>
-      <p class="hero__tagline reveal">Software engineer. The kind who goes <span class="highlight">by the book,</span> even when <span class="serif">nobody is checking.</span></p>
-      <div class="hero__meta reveal">
-        <p class="hero__experience">Frontend &amp; systems, <span id="experience-years">five</span> years and counting.</p>
-        <ul class="skill-pills" role="list">
-          <li class="skill-pill skill-pill--javascript">JavaScript</li>
-          <li class="skill-pill skill-pill--typescript">TypeScript</li>
-          <li class="skill-pill skill-pill--react">React.js</li>
-          <li class="skill-pill skill-pill--vue">Vue.js</li>
-          <li class="skill-pill skill-pill--css">CSS</li>
-          <li class="skill-pill skill-pill--serif skill-pill--systems">Systems Architecture</li>
-          <li class="skill-pill skill-pill--serif skill-pill--ai">AI Orchestration</li>
-        </ul>
+      <div class="hero__intro">
+        <p class="eyebrow">Hello, I am</p>
+        <h1 class="hero__name">Zakariya<br><span class="serif">Qureshi</span><i>.</i></h1>
       </div>
-    </section>
-  </div>
+
+      <div class="hero__ruled">
+        <p class="hero__tagline">Software engineer with an eye for detail and a deep commitment to <span class="highlight">good craft.</span></p>
+        <div class="hero__meta">
+          <p class="hero__experience">Frontend &amp; systems, <span id="experience-years">5</span> years and counting.</p>
+          <div class="hero__pills">
+            <ul class="pills" role="list" aria-label="Technologies">
+              <li class="pill pill--js">JavaScript</li>
+              <li class="pill pill--ts">TypeScript</li>
+              <li class="pill pill--react">React</li>
+              <li class="pill pill--vue">Vue</li>
+              <li class="pill pill--next">Next.js</li>
+              <li class="pill pill--web">HTML &amp; CSS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================== ABOUT ============================== -->
   <section id="about" class="about">
-    <div class="container about__inner">
-      <p class="eyebrow about__eyebrow reveal">About</p>
-      <p class="about__headline reveal">Perfectionist, pragmatist, <span class="serif">engineer.</span></p>
-      <div class="about__grid">
-        <div class="about__lead reveal">
-          <p>I have shipped with React, Vue and plain JavaScript, on brand-new products and decade-old codebases alike, and I&rsquo;m at home in any of them. I care most about knowing what the code is actually doing, and why, so it&rsquo;s easy for the next person to pick up. When I do my job right, nobody has to think about it again.</p>
-        </div>
-        <div class="about__note reveal">
-          <p class="eyebrow about__note-label">A note, instead of a bio</p>
-          <p class="about__note-text">I make software the way some people keep a garden: a bit of care <span class="highlight highlight--inverse">every day</span>, and a lot of patience. I&rsquo;m happiest when something I planted long ago is <span class="serif">still growing.</span></p>
-        </div>
+    <div class="section__inner about__inner">
+      <h2 class="section-title">About<i>.</i></h2>
+      <p class="about__note">I make software the way some people keep a garden: patiently, and <span class="about__mark">for the long run</span>. I&rsquo;m happiest when code I planted long ago is still in use, and still growing.</p>
+    </div>
+  </section>
+
+  <!-- ============================== PROJECTS ============================== -->
+  <section id="projects" class="projects">
+    <div class="section__inner">
+      <h2 class="section-title">Projects<i>.</i></h2>
+      <p class="projects__lede">Personal projects I&rsquo;ve built over the years, to sharpen my skills and put them on display.</p>
+
+      <div class="projects-grid">
+
+        <article class="project project--wip">
+          <div class="project__head">
+            <span class="project__word"><span class="project__reel" aria-hidden="true"><span>WIP<i>.</i></span></span><span class="sr-only">WIP</span></span>
+            <p class="project__meta">Work in Progress &middot; 2026</p>
+            <button class="project__toggle" type="button" aria-expanded="false" aria-controls="project-wip" aria-label="Work in Progress details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          </div>
+          <div class="project__body" id="project-wip">
+            <div class="project__inner"><div class="project__content">
+              <p class="project__desc">My newest project, and my first since 2022, shaped by everything I&rsquo;ve learned in between. The details stay under wraps for now. Check back soon.</p>
+              <ul class="pills project__pills" role="list">
+                <li class="pill pill--cream">Next</li>
+                <li class="pill pill--periwinkle">React</li>
+                <li class="pill pill--navy">TypeScript</li>
+                <li class="pill pill--sand">Zustand</li>
+                <li class="pill pill--lilac">CSS</li>
+              </ul>
+              <p class="project__status">Currently building</p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="project project--memory">
+          <div class="project__head">
+            <a class="project__word" href="https://zakariyaq313.github.io/memory-game/" target="_blank" rel="noopener" aria-label="Memory Game, live site"><span class="project__reel" aria-hidden="true"><span>Memory<i>.</i></span><span>Memory<i>.</i></span></span></a>
+            <p class="project__meta">Memory Game &middot; 2022</p>
+            <button class="project__toggle" type="button" aria-expanded="false" aria-controls="project-memory" aria-label="Memory Game details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          </div>
+          <div class="project__body" id="project-memory">
+            <div class="project__inner"><div class="project__content">
+              <p class="project__desc">A tile-matching game for up to four players. Flip the cards, find the pairs, and race the clock or each other. Play with icons or numbers on a 4&times;4 or 6&times;6 grid, shuffled fresh every round.</p>
+              <ul class="pills project__pills" role="list">
+                <li class="pill pill--periwinkle">React</li>
+                <li class="pill pill--navy">TypeScript</li>
+                <li class="pill pill--rose">Sass</li>
+              </ul>
+              <p class="project__links">
+                <a href="https://zakariyaq313.github.io/memory-game/" target="_blank" rel="noopener">Live<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                <a href="https://github.com/zakariyaq313/memory-game" target="_blank" rel="noopener">Code<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+              </p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="project project--notes">
+          <div class="project__head">
+            <a class="project__word" href="https://zakariyaq313.github.io/neon-notes-react/" target="_blank" rel="noopener" aria-label="Neon Notes, live site"><span class="project__reel" aria-hidden="true"><span>Notes<i>.</i></span><span>Notes<i>.</i></span></span></a>
+            <p class="project__meta">Neon Notes &middot; 2022</p>
+            <button class="project__toggle" type="button" aria-expanded="false" aria-controls="project-notes" aria-label="Neon Notes details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          </div>
+          <div class="project__body" id="project-notes">
+            <div class="project__inner"><div class="project__content">
+              <p class="project__desc">A simple app for writing and keeping notes. I built it in Vue first, then rebuilt it from scratch in React to compare the two side by side. Same app, same features, built two different ways.</p>
+              <ul class="pills project__pills" role="list">
+                <li class="pill pill--mint">Vue</li>
+                <li class="pill pill--periwinkle">React</li>
+                <li class="pill pill--navy">TypeScript</li>
+                <li class="pill pill--lilac">Redux</li>
+                <li class="pill pill--rose">Sass</li>
+              </ul>
+              <p class="project__links">
+                <a href="https://zakariyaq313.github.io/neon-notes-react/" target="_blank" rel="noopener">Live<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                <a href="https://github.com/zakariyaq313/neon-notes-react" target="_blank" rel="noopener">Code<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+              </p>
+            </div></div>
+          </div>
+        </article>
+
+        <article class="project project--bistro">
+          <div class="project__head">
+            <a class="project__word" href="https://zakariyaq313.github.io/restaurant-landing-page/" target="_blank" rel="noopener" aria-label="Landing Page, live site"><span class="project__reel" aria-hidden="true"><span>Bistro<i>.</i></span><span>Bistro<i>.</i></span></span></a>
+            <p class="project__meta">Landing Page &middot; 2021</p>
+            <button class="project__toggle" type="button" aria-expanded="false" aria-controls="project-bistro" aria-label="Landing Page details"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          </div>
+          <div class="project__body" id="project-bistro">
+            <div class="project__inner"><div class="project__content">
+              <p class="project__desc">Built from a single image of a Dribbble design, with nothing else to go on. I was just starting out and wanted to test myself. It came out nearly pixel-perfect, and showed me I could build just about anything.</p>
+              <ul class="pills project__pills" role="list">
+                <li class="pill pill--coral">HTML</li>
+                <li class="pill pill--lilac">CSS</li>
+                <li class="pill pill--rose">Sass</li>
+              </ul>
+              <p class="project__links">
+                <a href="https://zakariyaq313.github.io/restaurant-landing-page/" target="_blank" rel="noopener">Live<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+                <a href="https://github.com/zakariyaq313/restaurant-landing-page" target="_blank" rel="noopener">Code<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></a>
+              </p>
+            </div></div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- ============================== SELECTED WORK ============================== -->
-  <section id="work" class="work container">
-    <h2 class="section-title reveal">Selected <span class="serif">work.</span></h2>
-    <p class="section-lede reveal">A sample of the work I do year in, year out: projects I owned end to end, each a fair picture of how I build.</p>
+  <!-- ============================== LIFE + COLLECTION ============================== -->
+  <section id="life" class="life">
+    <div class="section__inner">
+      <h2 class="section-title">Life<i>.</i></h2>
+      <p class="life__text">Cats, skies and quiet evenings are where I find my calm. I hold on to whatever makes me feel something: photos, films, shows. Here&rsquo;s a glimpse into my world.</p>
 
-    <div class="project-cards">
-      <article class="project-card project-card--navy reveal">
-        <div class="project-card__header">
-          <p class="project-card__tag">AI · Frontend systems</p>
-          <h3 class="project-card__title">From Prompt to Product</h3>
-          <p class="project-card__badge">[ led end to end ]</p>
-        </div>
-        <p class="project-card__description">Plain English in, a live working product out. I architected the pipeline in between: it vets the request, hands the model exactly the context it needs, checks everything that comes back, and recovers cleanly when a generation goes wrong.</p>
-      </article>
+      <!-- Tablet & desktop: tabs + photo tray (tray filled by script.js) -->
+      <div class="tabs" role="tablist" aria-label="Collection folders"></div>
+      <div class="tray" id="tray" role="tabpanel" aria-live="polite"></div>
+      <p class="tray-caption"><span class="tray-caption__name"></span><span aria-hidden="true">|</span><span class="tray-caption__credit"></span></p>
 
-      <article class="project-card project-card--pink reveal">
-        <div class="project-card__header">
-          <p class="project-card__tag">Vanilla JS · Architecture</p>
-          <h3 class="project-card__title">A State Engine, From Scratch</h3>
-          <p class="project-card__badge">[ zero dependencies ]</p>
-        </div>
-        <p class="project-card__description">A reactive state system written in vanilla JavaScript, from first principles: immutable updates, actions, selectors. Components <span class="nowrap">re-render</span> only when something they depend on changes, so it stayed fast as the app grew.</p>
-      </article>
-
-      <article class="project-card project-card--yellow reveal">
-        <div class="project-card__header">
-          <p class="project-card__tag">CSS · Design systems</p>
-          <h3 class="project-card__title">A Token-Based Theming System</h3>
-          <p class="project-card__badge">[ designed and built ]</p>
-        </div>
-        <p class="project-card__description">The themes used to be hard-coded, color by color. I built a system instead, the way mature design systems do: every color is a design token, defined once and named for its role. Now every theme flips to dark in a click, and the whole interface follows. A new theme is just a palette.</p>
-      </article>
-
-      <article class="project-card project-card--green reveal">
-        <div class="project-card__header">
-          <p class="project-card__tag">Platform · Systems</p>
-          <h3 class="project-card__title">An Incremental Framework Upgrade</h3>
-          <p class="project-card__badge">[ zero downtime ]</p>
-        </div>
-        <p class="project-card__description">The platform was still shipping daily on Vue&nbsp;1, with Vue&nbsp;3 already out in the world, and upgrading wasn&rsquo;t a priority. So I volunteered: alongside my regular work, I taught the old codebase Vue&nbsp;2&rsquo;s habits, one component at a time, bringing Vue&nbsp;3 a step closer.</p>
-      </article>
-    </div>
-
-    <!-- Card-stack pagination - only visible on small screens, driven by script.js -->
-    <div class="project-nav" aria-hidden="true">
-      <div class="project-nav__controls">
-        <span class="project-nav__counter">01 / 04</span>
-        <div class="project-nav__dots">
-          <button type="button" aria-label="Show project 1"></button>
-          <button type="button" aria-label="Show project 2"></button>
-          <button type="button" aria-label="Show project 3"></button>
-          <button type="button" aria-label="Show project 4"></button>
-        </div>
-      </div>
-      <span class="project-nav__hint">drag / tap &rarr;</span>
+      <!-- Phones: folder accordion (filled by script.js) -->
+      <div class="folders"></div>
     </div>
   </section>
 
-  <!-- ============================== LIFE (away from the keyboard) ============================== -->
-  <section id="offline" class="life">
-    <div class="container life__inner">
-      <p class="eyebrow life__eyebrow reveal">Away from the keyboard</p>
-      <h2 class="life__headline reveal">Software is only <span class="serif">half the story.</span></h2>
-      <div class="life__grid">
-        <figure class="life__collage reveal">
-          <img src="assets/skies-stacked.jpg" alt="Six years of skies shot from the same terrace, sliced and stacked into one tall frame">
-          <figcaption>
-            <span class="life__collage-name">skies-stacked.jpg</span>
-            <span class="life__collage-note">one terrace · six yrs</span>
-          </figcaption>
-        </figure>
-        <div class="life__entries">
-          <div class="life-entry reveal">
-            <p class="eyebrow life-entry__label">Looking up</p>
-            <p class="life-entry__text">Whenever a good sunset or a strange cloud turned up, I photographed it from my terrace. Six years of that became a collection I never planned.</p>
-          </div>
-          <div class="life-entry reveal">
-            <p class="eyebrow life-entry__label">Company</p>
-            <p class="life-entry__text">Around thirty street cats were born and raised on my terrace. I gave them food and my evenings. They&rsquo;re why I never missed a sky.</p>
-          </div>
-          <div class="life-entry reveal">
-            <p class="eyebrow life-entry__label">Movement</p>
-            <p class="life-entry__text">I taught myself freerunning, backflips and all. These days I train MMA with real passion, and weekends belong to box cricket.</p>
-          </div>
-          <div class="life-entry reveal">
-            <p class="eyebrow life-entry__label">Comfort</p>
-            <p class="life-entry__text">The day ends with one episode of a good TV show, never a binge. A series lasts months that way, and there&rsquo;s always another waiting its turn.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== COLLECTION ============================== -->
-  <section id="archive" class="collection container">
-    <div class="collection__header reveal">
-      <h2 class="section-title">Everything worth keeping, <span class="serif">kept.</span></h2>
-    </div>
-    <p class="section-lede reveal">Collecting good things is an old habit of mine: anything worthwhile, in any medium. Here&rsquo;s a hand-picked corner of a much larger collection.</p>
-
-    <div class="folder-panel reveal">
-
-      <div class="folder folder--terrace-skies" data-folder="terrace-skies">
-        <div class="folder-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="folder-row__tint" aria-hidden="true"></span>
-          <span class="dot"></span>
-          <span class="folder-row__name">terrace-skies/</span>
-          <span class="folder-row__tagline">one terrace, every kind of light</span>
-          <span class="folder-row__meta">
-            <span class="folder-row__credit">shot by me</span>
-            <span class="folder-row__glyph" aria-hidden="true">+</span>
-          </span>
-        </div>
-        <div class="folder-tray">
-          <div class="folder-tray__inner">
-            <div class="photo-grid">
-              <div class="photo-tile"><img data-src="assets/terrace-skies-01-gold-and-violet.jpg" alt="Sunset burning gold and violet behind the tower"></div>
-              <div class="photo-tile"><img data-src="assets/terrace-skies-02-pastel-dusk.jpg" alt="Pastel pink and purple sunset"></div>
-              <div class="photo-tile"><img data-src="assets/terrace-skies-03-first-star.jpg" alt="Clear deep-blue dusk, a single faint star"></div>
-              <div class="photo-tile"><img data-src="assets/terrace-skies-04-crescent-moon.jpg" alt="A thin crescent moon over the tower as dusk fades to peach"></div>
-              <div class="photo-tile photo-tile--note"><p class="photo-tile__note">I check on it most evenings.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="folder folder--street-cats" data-folder="street-cats">
-        <div class="folder-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="folder-row__tint" aria-hidden="true"></span>
-          <span class="dot"></span>
-          <span class="folder-row__name">street-cats/</span>
-          <span class="folder-row__tagline">the ones who chose me</span>
-          <span class="folder-row__meta">
-            <span class="folder-row__credit">shot by me</span>
-            <span class="folder-row__glyph" aria-hidden="true">+</span>
-          </span>
-        </div>
-        <div class="folder-tray">
-          <div class="folder-tray__inner">
-            <div class="photo-grid">
-              <div class="photo-tile"><img data-src="assets/street-cats-01-kitten-and-sky.jpg" alt="A tiny kitten held up to a clear blue sky"></div>
-              <div class="photo-tile"><img data-src="assets/street-cats-02-underfoot.jpg" alt="Two tabbies weaving around my feet"></div>
-              <div class="photo-tile"><img data-src="assets/street-cats-03-under-the-aloe.jpg" alt="Kitten under aloe leaves beside a teal pot"></div>
-              <div class="photo-tile"><img data-src="assets/street-cats-04-silver-tabby.jpg" alt="Silver tabby held up against a blue sky"></div>
-              <div class="photo-tile photo-tile--note"><p class="photo-tile__note">We look out for each other.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="folder folder--cities" data-folder="cities-after-dark">
-        <div class="folder-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="folder-row__tint" aria-hidden="true"></span>
-          <span class="dot"></span>
-          <span class="folder-row__name">cities-after-dark/</span>
-          <span class="folder-row__tagline">neon, fog, traffic</span>
-          <span class="folder-row__meta">
-            <span class="folder-row__credit">collected</span>
-            <span class="folder-row__glyph" aria-hidden="true">+</span>
-          </span>
-        </div>
-        <div class="folder-tray">
-          <div class="folder-tray__inner">
-            <div class="photo-grid">
-              <div class="photo-tile"><img data-src="assets/cities-after-dark-01-neon-street.jpg" alt="Neon-lit street packed with minibuses at night"></div>
-              <div class="photo-tile"><img data-src="assets/cities-after-dark-02-rain-glow.jpg" alt="Rain-slicked city street glowing under streetlights"></div>
-              <div class="photo-tile"><img data-src="assets/cities-after-dark-03-light-trails.jpg" alt="Long-exposure light trails on a night expressway"></div>
-              <div class="photo-tile"><img data-src="assets/cities-after-dark-04-tower-in-fog.jpg" alt="Floodlit tower rising into the night fog"></div>
-              <div class="photo-tile photo-tile--note"><p class="photo-tile__note">Somewhere it&rsquo;s always 2 a.m.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="folder folder--wildlife" data-folder="wildlife">
-        <div class="folder-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="folder-row__tint" aria-hidden="true"></span>
-          <span class="dot"></span>
-          <span class="folder-row__name">wildlife/</span>
-          <span class="folder-row__tagline">the wild, up close</span>
-          <span class="folder-row__meta">
-            <span class="folder-row__credit">collected</span>
-            <span class="folder-row__glyph" aria-hidden="true">+</span>
-          </span>
-        </div>
-        <div class="folder-tray">
-          <div class="folder-tray__inner">
-            <div class="photo-grid">
-              <div class="photo-tile"><img class="photo--fox" data-src="assets/wildlife-01-arctic-fox.jpg" alt="An arctic fox sitting in violet evening snow"></div>
-              <div class="photo-tile"><img data-src="assets/wildlife-02-king-penguins.jpg" alt="Two king penguins standing together"></div>
-              <div class="photo-tile"><img class="photo--lion" data-src="assets/wildlife-03-lion-at-rest.jpg" alt="A lion at rest under a blood-red sky"></div>
-              <div class="photo-tile"><img class="photo--leopard" data-src="assets/wildlife-04-black-leopard.jpg" alt="A black leopard under a starlit sky"></div>
-              <div class="photo-tile photo-tile--note"><p class="photo-tile__note">One glimpse costs a lifetime of luck.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="folder folder--nature" data-folder="nature">
-        <div class="folder-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="folder-row__tint" aria-hidden="true"></span>
-          <span class="dot"></span>
-          <span class="folder-row__name">nature/</span>
-          <span class="folder-row__tagline">the planet, showing off</span>
-          <span class="folder-row__meta">
-            <span class="folder-row__credit">collected</span>
-            <span class="folder-row__glyph" aria-hidden="true">+</span>
-          </span>
-        </div>
-        <div class="folder-tray">
-          <div class="folder-tray__inner">
-            <div class="photo-grid">
-              <div class="photo-tile"><img data-src="assets/nature-01-blood-moon.jpg" alt="A blood moon framed by an ice cave"></div>
-              <div class="photo-tile"><img data-src="assets/nature-02-slot-canyon.jpg" alt="Light curving through a slot canyon"></div>
-              <div class="photo-tile"><img data-src="assets/nature-03-waterfall.jpg" alt="A moonlit waterfall with a rainbow arcing through its mist"></div>
-              <div class="photo-tile"><img data-src="assets/nature-04-fog-tide.jpg" alt="A pink-and-blue tide of fog rolling over a forest at dusk"></div>
-              <div class="photo-tile photo-tile--note"><p class="photo-tile__note">Not staged. Couldn&rsquo;t be.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="folder folder--geometry" data-folder="geometry">
-        <div class="folder-row" role="button" tabindex="0" aria-expanded="false">
-          <span class="folder-row__tint" aria-hidden="true"></span>
-          <span class="dot"></span>
-          <span class="folder-row__name">geometry/</span>
-          <span class="folder-row__tagline">lines, grids, repetition</span>
-          <span class="folder-row__meta">
-            <span class="folder-row__credit">collected</span>
-            <span class="folder-row__glyph" aria-hidden="true">+</span>
-          </span>
-        </div>
-        <div class="folder-tray">
-          <div class="folder-tray__inner">
-            <div class="photo-grid">
-              <div class="photo-tile"><img data-src="assets/geometry-01-plane-and-towers.jpg" alt="A plane threading four glass towers"></div>
-              <div class="photo-tile"><img data-src="assets/geometry-02-corridor.jpg" alt="A curved corridor of glowing panels"></div>
-              <div class="photo-tile"><img data-src="assets/geometry-03-zigzag-facade.jpg" alt="A facade stacked like toy blocks, all angles"></div>
-              <div class="photo-tile"><img class="photo--arches" data-src="assets/geometry-04-arches.jpg" alt="Arches within arches in warm plaster"></div>
-              <div class="photo-tile photo-tile--note"><p class="photo-tile__note">Held up by math and stubbornness.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================== CONTACT ============================== -->
-  <section id="hello" class="contact">
-    <div class="container contact__inner">
-      <div class="contact__grid">
-        <div>
-          <p class="eyebrow contact__eyebrow">Say hello</p>
-          <h2 class="contact__headline">The inbox is <span class="serif">open.</span></h2>
-          <p class="contact__lede">If something here resonated with you, write to me. Email is the one I answer fastest.</p>
-        </div>
-        <div class="contact-links">
-          <a class="contact-link" href="mailto:mzakariyaq313@gmail.com">
-            <span class="dot dot--sunshine"></span>
-            <span class="contact-link__name">mzakariyaq313@gmail.com</span>
-            <span class="contact-link__note">the surest way</span>
-          </a>
-          <a class="contact-link" href="https://github.com/zakariyaq313" target="_blank" rel="noopener">
-            <span class="dot dot--periwinkle"></span>
-            <span class="contact-link__name">github.com/zakariyaq313</span>
-            <span class="contact-link__note">the source</span>
-          </a>
-          <a class="contact-link" href="https://www.linkedin.com/in/zakariyaq313/" target="_blank" rel="noopener">
-            <span class="dot dot--green"></span>
-            <span class="contact-link__name">linkedin.com/in/zakariyaq313</span>
-            <span class="contact-link__note">the record</span>
-          </a>
-        </div>
+  <!-- ============================== HELLO ============================== -->
+  <section id="hello" class="hello">
+    <div class="hello__inner">
+      <h2 class="hello__title">The inbox is <span class="serif">open</span><i>.</i></h2>
+      <p class="hello__text">For work, ideas, or just to say hello. All welcome.</p>
+      <div class="contact">
+        <a class="contact__mail" href="mailto:mzakariyaq313@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg><span>mzakariyaq313@gmail.com</span></a>
+        <a class="contact__icon" href="https://github.com/zakariyaq313" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+        <a class="contact__icon" href="https://www.linkedin.com/in/zakariyaq313/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
       </div>
       <footer class="site-footer">
-        <span class="site-footer__copyright">© <span id="copyright-year">2026</span> Zakariya Qureshi</span>
-        <span class="site-footer__right">
-          <span class="site-footer__colophon">Set in Hanken Grotesk, Instrument Serif &amp; JetBrains Mono</span>
-          <a class="site-footer__top" href="#top">↑ Top</a>
-        </span>
+        <span>&copy; <span id="copyright-year">2026</span> Zakariya Qureshi</span>
+        <a href="#top">&uarr; Top</a>
       </footer>
     </div>
   </section>
 
-  <!-- ============================== MOBILE MENU ============================== -->
-  <div class="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu__header">
-      <span class="eyebrow mobile-menu__label">Menu</span>
-      <button class="mobile-menu__close" type="button" aria-label="Close menu">Close <span aria-hidden="true">&times;</span></button>
-    </div>
-    <nav class="mobile-menu__nav" aria-label="Mobile">
-      <div class="mobile-menu__list">
-        <a class="mobile-menu-link" href="#about">
-          <span class="dot dot--sunshine"></span>
-          <span class="mobile-menu-link__name">about/</span>
-        </a>
-        <a class="mobile-menu-link" href="#work">
-          <span class="dot dot--navy"></span>
-          <span class="mobile-menu-link__name">work/</span>
-        </a>
-        <a class="mobile-menu-link" href="#offline">
-          <span class="dot dot--pink"></span>
-          <span class="mobile-menu-link__name">life/</span>
-        </a>
-        <a class="mobile-menu-link" href="#archive">
-          <span class="dot dot--periwinkle"></span>
-          <span class="mobile-menu-link__name">collection/</span>
-        </a>
-        <a class="mobile-menu-link" href="#hello">
-          <span class="dot dot--green"></span>
-          <span class="mobile-menu-link__name">hello/</span>
-        </a>
-      </div>
-    </nav>
-  </div>
-
-  <!-- ============================== LIGHTBOX ============================== -->
-  <div class="lightbox" aria-hidden="true">
-    <div class="lightbox__bar">
-      <span class="lightbox__caption"></span>
-      <button class="lightbox__close" type="button" aria-label="Close photo view">[ close ]</button>
-    </div>
-    <img class="lightbox__image" alt="">
-  </div>
-
 </div>
+
+<!-- ============================== MOBILE MENU ============================== -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <div class="menu__bar">
+    <a class="site-header__mark" href="#top" data-menu-link>ZQ</a>
+    <button class="menu__close" type="button" aria-label="Close menu">Close <span aria-hidden="true">&times;</span></button>
+  </div>
+  <nav class="menu__nav" aria-label="Menu">
+    <a class="menu__link menu__link--about" href="#about" data-menu-link>About<i>.</i></a>
+    <a class="menu__link menu__link--projects" href="#projects" data-menu-link>Projects<i>.</i></a>
+    <a class="menu__link menu__link--life" href="#life" data-menu-link>Life<i>.</i></a>
+    <a class="menu__link menu__link--hello" href="#hello" data-menu-link>Hello<i>.</i></a>
+  </nav>
+</div>
+
+<!-- ============================== LIGHTBOX ============================== -->
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" aria-hidden="true">
+  <div class="lightbox__bar">
+    <span class="lightbox__count"></span>
+    <button class="lightbox__close" type="button">Close &times;</button>
+  </div>
+  <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16 10H4M9 5l-5 5 5 5"/></svg></button>
+  <span class="lightbox__skeleton" aria-hidden="true"></span>
+  <img class="lightbox__img" alt="">
+  <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+  <p class="lightbox__credit"></p>
+</div>
+
 </body>
 </html>
