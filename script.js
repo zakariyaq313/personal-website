@@ -15,7 +15,7 @@
   const FULL = THUMB; // one file per photo; the grid and the lightbox share it, so the lightbox opens from cache
 
   /* 1. Data
-     photos: [file name, alt text, object-position?, scale?] */
+     photos: [file name, alt text, object-position?, scale?, zoom origin?] */
   const FOLDERS = [
     { word: 'Skies', key: 'terrace-skies', cls: 'f-skies', own: true, note: 'The tower stays. The sky never does.', photos: [
       ['terrace-skies-01-gold-and-violet', 'Sunset burning gold and violet behind the tower'],
@@ -33,20 +33,15 @@
       ['cities-after-dark-03-light-trails', 'Long-exposure light trails on a night expressway'],
       ['cities-after-dark-04-tower-in-fog', 'Floodlit tower rising into the night fog']] },
     { word: 'Wildlife', key: 'wildlife', cls: 'f-wildlife', note: 'One glimpse costs a lifetime of luck.', photos: [
-      ['wildlife-01-arctic-fox', 'An arctic fox sitting in violet evening snow', '18% 50%'],
-      ['wildlife-02-king-penguins', 'Two king penguins standing together'],
-      ['wildlife-03-lion-at-rest', 'A lion at rest under a blood-red sky', '50% 100%', 1.18],
+      ['wildlife-01-arctic-fox', 'An arctic fox sitting in violet evening snow', '18% 50%', 1.1, '50% 85%'],
+      ['wildlife-02-spirit-bear', 'A white spirit bear walking along a mossy log in the rainforest', '31% 50%'],
+      ['wildlife-03-lion-at-rest', 'A lion at rest under a blood-red sky', '50% 100%', 1.43, '50% 100%'],
       ['wildlife-04-black-leopard', 'A black leopard under a starlit sky', '30% 50%']] },
     { word: 'Nature', key: 'nature', cls: 'f-nature', note: 'Someday, in person.', photos: [
       ['nature-01-blood-moon', 'A blood moon framed by an ice cave'],
       ['nature-02-slot-canyon', 'Light curving through a slot canyon'],
       ['nature-03-waterfall', 'A moonlit waterfall with a rainbow arcing through its mist'],
-      ['nature-04-fog-tide', 'A pink-and-blue tide of fog rolling over a forest at dusk']] },
-    { word: 'Geometry', key: 'geometry', cls: 'f-geometry', note: 'Somebody measured twice.', photos: [
-      ['geometry-01-plane-and-towers', 'A plane threading four glass towers'],
-      ['geometry-02-corridor', 'A curved corridor of glowing panels'],
-      ['geometry-03-zigzag-facade', 'A facade stacked like toy blocks, all angles'],
-      ['geometry-04-arches', 'Arches within arches in warm plaster', '50% 0%']] }
+      ['nature-04-fog-tide', 'A pink-and-blue tide of fog rolling over a forest at dusk']] }
   ];
 
   const UTM = '?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText';
@@ -58,17 +53,13 @@
     'cities-after-dark-03-light-trails': unsplash('Nguyen Phan Nam Anh', 'a-city-at-night-with-a-lot-of-traffic-7ZQXe8mqmaE'),
     'cities-after-dark-04-tower-in-fog': unsplash('weston m', 'white-car-on-road-near-high-rise-buildings-during-night-time-nqXEd6P_qJ8'),
     'wildlife-01-arctic-fox': { via: 'National Geographic' },
-    'wildlife-02-king-penguins': unsplash('Valentina Fischer', 'a-couple-of-penguins-standing-next-to-each-other-cRP4WvsxGzU'),
+    'wildlife-02-spirit-bear': { by: 'Cristina Mittermeier & Paul Nicklen' },
     'wildlife-03-lion-at-rest': unsplash('Keyur Nandaniya', 'lion-on-green-grass-during-golden-hour-ywPqgpKsXls'),
     'wildlife-04-black-leopard': { by: 'Will Burrard-Lucas', href: 'https://www.burrard-lucas.com' },
     'nature-01-blood-moon': unsplash('Sean Pierce', 'an-orange-ball-is-in-the-middle-of-ice-formations-qKtOgTLEAXA'),
     'nature-02-slot-canyon': natgeo('https://www.nationalgeographic.com/photo-of-the-day/media-spotlight/antelope-canyon-page-arizona'),
     'nature-03-waterfall': natgeo('https://www.nationalgeographic.com/travel/article/finding-moonbows-yosemite'),
-    'nature-04-fog-tide': unsplash('Zetong Li', 'a-man-with-a-sunset-in-the-background-sJhGEq4geOw'),
-    'geometry-01-plane-and-towers': unsplash('Kah Hay Chee', 'white-bird-flying-over-the-city-during-daytime-OSp128rBRos'),
-    'geometry-02-corridor': unsplash('Pierre Ch\u00e2tel-Innocenti', 'yellow-hallway-Wm3DCN_ydR0'),
-    'geometry-03-zigzag-facade': unsplash('Franck V.', 'blue-and-white-glass-walled-building-YPRDR3r_2r8'),
-    'geometry-04-arches': unsplash('Ka\u0155eem Saleh', 'brown-wooden-framed-mirror-on-white-wall-NIkfwXte550')
+    'nature-04-fog-tide': unsplash('Zetong Li', 'a-man-with-a-sunset-in-the-background-sJhGEq4geOw')
   };
 
   const titleCase = (key) => key.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
@@ -94,9 +85,10 @@
     img.src = src;
   });
   const nextFrame = (fn) => requestAnimationFrame(() => requestAnimationFrame(fn));
-  const setPhotoStyle = (img, pos, scale) => {
+  const setPhotoStyle = (img, pos, scale, origin) => {
     if (pos) img.style.setProperty('--pos', pos);
     if (scale) img.style.setProperty('--s', scale);
+    if (origin) img.style.setProperty('--o', origin);
   };
 
   // Used by the menu and lightbox: stops the page scrolling and keeps keyboard focus out of it while they are open.
@@ -185,12 +177,12 @@
     tray.className = 'tray ' + f.cls + (tray.classList.contains('is-fading') ? ' is-fading' : '');
     tray.removeAttribute('aria-busy');
     tray.replaceChildren();
-    f.photos.forEach(([n, alt, pos, scale], j) => {
+    f.photos.forEach(([n, alt, pos, scale, origin], j) => {
       const tile = el('button', 'tile', { type: 'button', 'aria-label': alt });
       const img = el('img', null, { src: THUMB(n), alt, loading: 'lazy', decoding: 'async' });
-      setPhotoStyle(img, pos, scale);
+      setPhotoStyle(img, pos, scale, origin);
       tile.appendChild(img);
-      tile.addEventListener('click', () => openLightbox(i, j));
+      tile.addEventListener('click', (e) => openLightbox(i, j, e.detail === 0));
       tray.appendChild(tile);
     });
     const note = el('div', 'tray__note');
@@ -273,22 +265,22 @@
   }
 
   function fillFolder(grid, i) {
-    FOLDERS[i].photos.forEach(([n, alt, pos, scale], j) => {
+    FOLDERS[i].photos.forEach(([n, alt, pos, scale, origin], j) => {
       const tile = el('button', 'folder__tile', { type: 'button', 'aria-label': alt });
       const img = el('img', null, { alt, decoding: 'async' });
-      setPhotoStyle(img, pos, scale);
+      setPhotoStyle(img, pos, scale, origin);
       img.addEventListener('load', () => tile.classList.add('is-loaded'), { once: true });
       img.src = THUMB(n);
       if (img.complete && img.naturalWidth) tile.classList.add('is-loaded');
       tile.appendChild(img);
-      tile.addEventListener('click', () => openLightbox(i, j));
+      tile.addEventListener('click', (e) => openLightbox(i, j, e.detail === 0));
       grid.appendChild(tile);
     });
   }
 
   /* 6. Lightbox: opens with a fade (pulsing card if slow); prev/next cross-dissolve in place.
      Neighbours are preloaded. */
-  const lb = { folder: 0, index: -1, token: 0, el: null, img: null, count: null, credit: null, lastFocus: null, tx: null, ty: null };
+  const lb = { folder: 0, index: -1, token: 0, el: null, img: null, count: null, credit: null, lastFocus: null, viaKeyboard: false, tx: null, ty: null };
 
   function initLightbox() {
     lb.el = document.querySelector('.lightbox');
@@ -316,15 +308,16 @@
     });
   }
 
-  function openLightbox(folder, index) {
+  function openLightbox(folder, index, viaKeyboard) {
     lb.folder = folder;
     lb.lastFocus = document.activeElement;
+    lb.viaKeyboard = !!viaKeyboard;
     lb.img.classList.add('is-hidden');
     lb.el.classList.add('is-open');
     lb.el.setAttribute('aria-hidden', 'false');
     lockScroll(true);
     showPhoto(index, true);
-    lb.el.querySelector('.lightbox__close').focus({ preventScroll: true });
+    lb.el.focus({ preventScroll: true }); // focus the viewer itself: keys work, Tab reaches the buttons, nothing looks pre-selected
   }
 
   function closeLightbox() {
@@ -335,7 +328,10 @@
     clearGhosts();
     lb.el.setAttribute('aria-hidden', 'true');
     lockScroll(false);
-    if (lb.lastFocus) lb.lastFocus.focus({ preventScroll: true });
+    // Keyboard users get focus back on the photo they opened (with its ring), so they keep their place.
+    // Mouse and touch users don't need it, so nothing is left looking selected.
+    if (lb.viaKeyboard && lb.lastFocus) lb.lastFocus.focus({ preventScroll: true });
+    else if (lb.el.contains(document.activeElement)) document.activeElement.blur();
   }
 
   function step(d) {
